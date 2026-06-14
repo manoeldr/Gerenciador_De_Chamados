@@ -1,7 +1,7 @@
 # Gerenciador de Chamados
 
 **Aluno:** Manoel Rodrigues  
-**Disciplina:** POO I — FSG  
+**Disciplina:** Programação Orientada a Objetos I — FSG  
 **Entrega:** 1ª entrega (15/06/2026)
 
 ## Como executar
