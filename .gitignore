@@ -1,0 +1,13 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+
+# JSON gerado em runtime
+chamados.json
+
+# macOS
+.DS_Store
+._*
+Thumbs.db.idea/
