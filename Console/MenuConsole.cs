@@ -101,43 +101,43 @@ namespace GerenciadorChamados.Console
         private void ExibirLista()
         {
             System.Console.Clear();
-            System.Console.WriteLine("┌──────────────────────────────────────────────┐");
-            System.Console.WriteLine("│         GERENCIADOR DE CHAMADOS              │");
-            System.Console.WriteLine("│         === CONSULTA DE CHAMADOS ===         │");
-            System.Console.WriteLine("├──────────────────────────────────────────────┤");
+            System.Console.WriteLine("┌────────────────────────────────────────────────────────────────┐");
+            System.Console.WriteLine("│                 GERENCIADOR DE CHAMADOS                        │");
+            System.Console.WriteLine("│                 === CONSULTA DE CHAMADOS ===                   │");
+            System.Console.WriteLine("├────────────────────────────────────────────────────────────────┤");
 
             var lista = _gerenciador.ListarTodos();
 
             if (lista.Count == 0)
             {
-                System.Console.WriteLine("│                                              │");
-                System.Console.WriteLine("│  Nenhum chamado cadastrado.                  │");
-                System.Console.WriteLine("│                                              │");
-                System.Console.WriteLine("│  [0] Voltar ao menu                          │");
-                System.Console.WriteLine("└──────────────────────────────────────────────┘");
+                System.Console.WriteLine("│                                                            │");
+                System.Console.WriteLine("│  Nenhum chamado cadastrado.                                │");
+                System.Console.WriteLine("│                                                            │");
+                System.Console.WriteLine("│  [0] Voltar ao menu                                        │");
+                System.Console.WriteLine("└────────────────────────────────────────────────────────────┘");
                 AguardarTecla();
                 return;
             }
 
-            System.Console.WriteLine("│                                              │");
-            System.Console.WriteLine("│  ID  │ Status    │ Abertura   │ Descrição   │");
-            System.Console.WriteLine("│  ----+-----------+------------+-------------|");
+            System.Console.WriteLine("│                                                                │");
+            System.Console.WriteLine("│  ID  │ Status    │ Abertura   │ Descrição                      │");
+            System.Console.WriteLine("│  ----+-----------+------------+--------------------------------│");
 
             foreach (var c in lista)
             {
-                string trecho = c.Descricao.Length > 12
-                    ? c.Descricao.Substring(0, 12) + "..."
-                    : c.Descricao;
+                string trecho = c.Descricao.Length > 27
+                    ? c.Descricao.Substring(0, 27) + "..."
+                    : c.Descricao.PadRight(30);
                 string status = c.Status.ToString().PadRight(9);
-                string linha = "│  " + c.Id.ToString().PadRight(4) + "│ " + status + " │ " +
-                               c.DataAbertura.ToString("dd/MM/yyyy") + " │ " + trecho;
+                string idStr = c.Id.ToString().PadRight(4);
+                string data = c.DataAbertura.ToString("dd/MM/yyyy");
+                string linha = "│  " + idStr + "│ " + status + " │ " + data + " │ " + trecho + " │";
                 System.Console.WriteLine(linha);
             }
 
-            System.Console.WriteLine("│                                              │");
-            System.Console.WriteLine("├──────────────────────────────────────────────┤");
-            System.Console.Write("│  Digite o ID para ver detalhes (0 = voltar): ");
-            System.Console.WriteLine();
+            System.Console.WriteLine("│                                                                │");
+            System.Console.WriteLine("├────────────────────────────────────────────────────────────────┤");
+            System.Console.WriteLine("│  Digite o ID para ver detalhes (0 = voltar)                    │");
             System.Console.Write("│  > ");
 
             string? entrada = System.Console.ReadLine();
